@@ -28,7 +28,7 @@ const About = () => {
         <section
             id="about"
             ref={sectionRef}
-            className="relative py-24 bg-black overflow-hidden"
+            className="relative py-12 md:py-24 bg-black overflow-hidden"
         >
             {/* Background Elements */}
             <div className="absolute inset-0 opacity-20">
@@ -40,7 +40,7 @@ const About = () => {
                 <div className="max-w-6xl mx-auto">
                     {/* Header */}
                     <div
-                        className={`text-center mb-16 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                        className={`text-center mb-16 transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
                             }`}
                     >
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-full border border-orange-500/30 mb-6">
@@ -58,7 +58,7 @@ const About = () => {
                     <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
                         {/* Left Column - Content */}
                         <div
-                            className={`space-y-6 transition-all duration-1000 delay-200 ${hasIntersected ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                            className={`space-y-6 transition-all duration-1000 delay-200 ease-out ${hasIntersected ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 -translate-x-12 blur-sm'
                                 }`}
                         >
                             <div className="relative">
@@ -92,22 +92,22 @@ const About = () => {
 
                         {/* Right Column - Stats & Visuals */}
                         <div
-                            className={`space-y-8 transition-all duration-1000 delay-400 ${hasIntersected ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                            className={`space-y-8 transition-all duration-1000 delay-400 ease-out ${hasIntersected ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 translate-x-12 blur-sm'
                                 }`}
                         >
-                            <div className="grid gap-6">
+                            <div className="grid grid-cols-3 gap-2 md:gap-6">
                                 {stats.map((stat, index) => (
                                     <div
                                         key={index}
-                                        className="group p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105"
+                                        className="group p-2 md:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105"
                                     >
-                                        <div className="flex items-center gap-4">
-                                            <div className="p-3 bg-white/5 rounded-xl group-hover:bg-orange-500/20 transition-colors duration-300">
+                                        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
+                                            <div className="p-2 md:p-3 bg-white/5 rounded-xl group-hover:bg-orange-500/20 transition-colors duration-300">
                                                 {stat.icon}
                                             </div>
                                             <div>
-                                                <h4 className="text-3xl font-bold text-white mb-1">{stat.value}</h4>
-                                                <p className="text-gray-400 text-sm">{stat.label}</p>
+                                                <h4 className="text-sm md:text-3xl font-bold text-white mb-0.5 md:mb-1">{stat.value}</h4>
+                                                <p className="text-gray-400 text-[10px] md:text-sm leading-tight">{stat.label}</p>
                                             </div>
                                         </div>
                                     </div>

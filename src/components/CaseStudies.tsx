@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { TrendingUp, Users, Target, Zap, Smartphone, GraduationCap, Youtube, ShoppingBag } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import TiltCard from './TiltCard';
 
 const caseStudies = [
   {
@@ -75,7 +76,7 @@ const CaseStudies = () => {
     <section
       id="case-studies"
       ref={sectionRef}
-      className="relative py-24 bg-gradient-to-b from-black via-zinc-900/10 to-black overflow-hidden"
+      className="relative py-12 md:py-24 bg-gradient-to-b from-black via-zinc-900/10 to-black overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-40 left-20 w-96 h-96 bg-orange-500 rounded-full filter blur-[150px]"></div>
@@ -84,7 +85,7 @@ const CaseStudies = () => {
 
       <div className="relative z-10 container mx-auto px-6">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
             }`}
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
@@ -97,84 +98,89 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-8">
           {caseStudies.map((study, index) => {
             const Icon = study.icon;
             return (
               <div
                 key={study.id}
-                className={`group relative flex flex-col bg-gradient-to-br from-white/5 to-transparent rounded-3xl border border-white/10 overflow-hidden backdrop-blur-sm hover:border-white/20 transition-all duration-500 hover:-translate-y-2 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
+                className={`${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
+                  } transition-all duration-1000 ease-out`}
                 style={{
                   transitionDelay: `${index * 150}ms`,
                 }}
               >
-                {/* Image Section - Reduced Height */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={study.image}
-                    alt={study.title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <TiltCard
+                  className="group relative flex flex-col bg-gradient-to-br from-white/5 to-transparent rounded-2xl md:rounded-3xl border border-white/10 overflow-hidden backdrop-blur-sm hover:border-white/20 h-full"
+                  scale={1.02}
+                >
+                  {/* Image Section - Reduced Height */}
+                  <div className="relative h-28 md:h-48 overflow-hidden">
+                    <img
+                      src={study.image}
+                      alt={study.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
 
-                  <div className="absolute top-4 left-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${study.gradient} flex items-center justify-center shadow-lg`}>
-                      <Icon className="w-6 h-6 text-white" />
+                    <div className="absolute top-2 left-2 md:top-4 md:left-4">
+                      <div className={`w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br ${study.gradient} flex items-center justify-center shadow-lg`}>
+                        <Icon className="w-4 h-4 md:w-6 md:h-6 text-white" />
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4">
+                      <div className="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-black/50 backdrop-blur-md rounded-full text-[10px] md:text-xs text-white border border-white/10">
+                        {study.category}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="absolute bottom-4 left-4">
-                    <div className="inline-block px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs text-white border border-white/10">
-                      {study.category}
+                  {/* Content Section */}
+                  <div className="p-3 md:p-6 flex flex-col flex-grow">
+                    <h3 className="text-sm md:text-2xl font-bold text-white mb-2 md:mb-4 group-hover:text-orange-400 transition-colors leading-tight">
+                      {study.title}
+                    </h3>
+
+                    <div className="space-y-2 md:space-y-4 mb-3 md:mb-6 flex-grow hidden md:block">
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                          Challenge
+                        </h4>
+                        <p className="text-gray-300 text-sm line-clamp-3">{study.challenge}</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                          Solution
+                        </h4>
+                        <p className="text-gray-300 text-sm line-clamp-3">{study.solution}</p>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Content Section */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-400 transition-colors">
-                    {study.title}
-                  </h3>
-
-                  <div className="space-y-4 mb-6 flex-grow">
                     <div>
-                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                        Challenge
-                      </h4>
-                      <p className="text-gray-300 text-sm line-clamp-3">{study.challenge}</p>
-                    </div>
-
-                    <div>
-                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                        Solution
-                      </h4>
-                      <p className="text-gray-300 text-sm line-clamp-3">{study.solution}</p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="grid grid-cols-3 gap-2">
-                      {study.results.map((result, idx) => {
-                        const ResultIcon = result.icon;
-                        return (
-                          <div
-                            key={idx}
-                            className="p-2 bg-white/5 rounded-lg border border-white/5 text-center"
-                          >
-                            <ResultIcon className="w-4 h-4 text-orange-400 mx-auto mb-1" />
-                            <p className={`text-lg font-bold bg-gradient-to-r ${study.gradient} bg-clip-text text-transparent`}>
-                              {result.value}
-                            </p>
-                            <p className="text-[10px] text-gray-400 uppercase tracking-tight">{result.label}</p>
-                          </div>
-                        );
-                      })}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-2">
+                        {study.results.map((result, idx) => {
+                          const ResultIcon = result.icon;
+                          return (
+                            <div
+                              key={idx}
+                              className="p-1.5 md:p-2 bg-white/5 rounded-lg border border-white/5 text-center"
+                            >
+                              <ResultIcon className="w-3 h-3 md:w-4 md:h-4 text-orange-400 mx-auto mb-0.5 md:mb-1" />
+                              <p className={`text-xs md:text-lg font-bold bg-gradient-to-r ${study.gradient} bg-clip-text text-transparent`}>
+                                {result.value}
+                              </p>
+                              <p className="text-[8px] md:text-[10px] text-gray-400 uppercase tracking-tight">{result.label}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
+                </TiltCard>
               </div>
             );
           })}

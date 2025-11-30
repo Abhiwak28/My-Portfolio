@@ -11,6 +11,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import TiltCard from './TiltCard';
 
 const services = [
   {
@@ -87,7 +88,7 @@ const WhatIDo = () => {
     <section
       id="what-i-do"
       ref={sectionRef}
-      className="relative py-24 bg-gradient-to-b from-black via-violet-950/10 to-black overflow-hidden"
+      className="relative py-12 md:py-24 bg-gradient-to-b from-black via-violet-950/10 to-black overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full filter blur-[120px]"></div>
@@ -96,7 +97,7 @@ const WhatIDo = () => {
 
       <div className="relative z-10 container mx-auto px-6">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
             }`}
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
@@ -111,34 +112,39 @@ const WhatIDo = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-3 md:gap-6">
               {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <div
                     key={index}
-                    className={`group relative overflow-hidden p-6 bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 backdrop-blur-sm hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/20 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                      }`}
+                    className={`${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
+                      } transition-all duration-1000 ease-out`}
                     style={{
                       transitionDelay: `${index * 80}ms`,
                     }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/10 group-hover:to-amber-500/10 transition-all duration-500"></div>
-                    <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -mr-20 -mt-20"></div>
+                    <TiltCard
+                      className="group relative overflow-hidden p-3 md:p-6 bg-gradient-to-br from-white/5 to-transparent rounded-xl md:rounded-2xl border border-white/10 backdrop-blur-sm hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/20 h-full"
+                      scale={1.05}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/10 group-hover:to-amber-500/10 transition-all duration-500"></div>
+                      <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -mr-20 -mt-20"></div>
 
-                    <div className="relative z-10">
-                      <div
-                        className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-current/20`}
-                      >
-                        <Icon className="w-7 h-7 text-white" />
+                      <div className="relative z-10">
+                        <div
+                          className={`w-8 h-8 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-2 md:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-current/20`}
+                        >
+                          <Icon className="w-4 h-4 md:w-7 md:h-7 text-white" />
+                        </div>
+                        <h3 className="text-xs md:text-xl font-bold text-white mb-1 md:mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-amber-400 group-hover:bg-clip-text transition-all duration-300 leading-tight">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-400 text-[10px] md:text-sm leading-tight md:leading-relaxed line-clamp-2 md:line-clamp-none">{service.description}</p>
+                        <div className="mt-4 flex items-center gap-2 text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-amber-400 group-hover:bg-clip-text transition-all duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
-                      <div className="mt-4 flex items-center gap-2 text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      </div>
-                    </div>
+                    </TiltCard>
                   </div>
                 );
               })}
@@ -146,7 +152,7 @@ const WhatIDo = () => {
           </div>
 
           <div
-            className={`relative rounded-2xl overflow-hidden border border-white/10 transition-all duration-1000 h-full min-h-[500px] ${hasIntersected ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            className={`relative rounded-2xl overflow-hidden border border-white/10 transition-all duration-1000 ease-out h-full min-h-[500px] ${hasIntersected ? 'opacity-100 translate-x-0 blur-0 scale-100' : 'opacity-0 translate-x-12 blur-sm scale-95'
               }`}
           >
             <div className="relative h-full">

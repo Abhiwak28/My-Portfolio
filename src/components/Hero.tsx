@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { ASSETS } from '../constants/assets';
 import StatCounter from './StatCounter';
+import GlitchText from './GlitchText';
 
 const Hero = () => {
   const greetings = ['Namaste', 'Hello', 'Bonjour', 'Hola', 'Ciao'];
@@ -29,23 +30,26 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-32">
+      <div className="relative z-10 container mx-auto px-6 py-20 md:py-32">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-4 h-12">
+          <div className="mb-4 h-12 md:h-20">
             {greetings.map((greeting, index) => (
-              <p
+              <div
                 key={greeting}
-                className={`text-xl md:text-7xl text-gray-400 mb-4 transition-all duration-500 absolute left-1/2 -translate-x-1/2 ${index === currentGreeting
+                className={`absolute left-1/2 -translate-x-1/2 transition-all duration-500 ${index === currentGreeting
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 -translate-y-4'
                   }`}
               >
-                {greeting}
-              </p>
+                <GlitchText
+                  text={greeting}
+                  className="text-5xl md:text-7xl text-gray-400"
+                />
+              </div>
             ))}
           </div>
 
-          <h1 className="text-5xl md:text-7xl mt-12 lg:text-8xl font-bold text-white mb-6 animate-fade-in-up animation-delay-200">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl mt-2 lg:text-8xl font-bold text-white mb-6 animate-fade-in-up animation-delay-200 whitespace-nowrap">
             Abhiwak Tiwari
           </h1>
 
@@ -67,7 +71,7 @@ const Hero = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 animate-fade-in-up animation-delay-600">
+          <div className="grid grid-cols-3 gap-2 md:gap-8 mb-12 animate-fade-in-up animation-delay-600">
             <StatCounter
               end={100000}
               label="YouTube Subscribers"
@@ -91,17 +95,17 @@ const Hero = () => {
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-800">
+          <div className="flex flex-col md:flex-row gap-4 justify-center w-full md:w-auto animate-fade-in-up animation-delay-800">
             <a
               href="#my-work"
-              className="group px-8 py-4 bg-gradient-to-r from-orange-600 to-amber-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+              className="group w-full md:w-auto px-4 py-3 md:px-8 md:py-4 bg-gradient-to-r from-orange-600 to-amber-600 rounded-full text-white text-sm md:text-base font-semibold hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
             >
               View My Work
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#contact"
-              className="px-8 py-4 bg-transparent border-2 border-orange-500 rounded-full text-white font-semibold hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105"
+              className="w-full md:w-auto px-4 py-3 md:px-8 md:py-4 bg-transparent border-2 border-orange-500 rounded-full text-white text-sm md:text-base font-semibold hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 flex items-center justify-center"
             >
               Hire Me
             </a>
@@ -109,7 +113,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:flex">
         <div className="w-6 h-10 border-2 border-orange-400 rounded-full flex items-start justify-center p-2">
           <div className="w-1 h-3 bg-orange-400 rounded-full animate-scroll"></div>
         </div>

@@ -36,7 +36,7 @@ const HowIWork = () => {
     <section
       id="how-i-work"
       ref={sectionRef}
-      className="relative py-24 bg-gradient-to-b from-black via-violet-950/10 to-black overflow-hidden"
+      className="relative py-12 md:py-24 bg-gradient-to-b from-black via-violet-950/10 to-black overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 opacity-20">
@@ -47,7 +47,7 @@ const HowIWork = () => {
 
       <div className="relative z-10 container mx-auto px-6">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
             }`}
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
@@ -74,30 +74,32 @@ const HowIWork = () => {
               </p>
             </div>
 
-            {insights.map((insight, index) => {
-              const Icon = insight.icon;
-              return (
-                <div
-                  key={index}
-                  className={`group relative p-6 bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/20 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                  style={{
-                    transitionDelay: `${index * 150}ms`,
-                  }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-6 h-6 text-white" />
+            <div className="grid grid-cols-2 gap-3 md:block md:space-y-6">
+              {insights.map((insight, index) => {
+                const Icon = insight.icon;
+                return (
+                  <div
+                    key={index}
+                    className={`group relative p-4 md:p-6 bg-gradient-to-br from-white/5 to-transparent rounded-xl md:rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/20 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
+                      }`}
+                    style={{
+                      transitionDelay: `${index * 150}ms`,
+                    }}
+                  >
+                    <div className="flex flex-col md:flex-row items-start gap-2 md:gap-4">
+                      <div className="flex-shrink-0 w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-4 h-4 md:w-6 md:h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs md:text-xl font-bold text-white mb-1 md:mb-2 leading-tight">{insight.title}</h4>
+                        <p className="text-gray-400 text-[10px] md:text-sm leading-tight md:leading-relaxed hidden md:block">{insight.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-white mb-2">{insight.title}</h4>
-                      <p className="text-gray-400 text-sm">{insight.description}</p>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/10 group-hover:to-amber-500/10 rounded-2xl transition-all duration-500"></div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/10 group-hover:to-amber-500/10 rounded-2xl transition-all duration-500"></div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           <div
@@ -105,7 +107,7 @@ const HowIWork = () => {
               }`}
           >
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm">
-              <div className="relative aspect-[9/16] md:aspect-video bg-black">
+              <div className="relative aspect-video bg-black">
                 {!isPlaying ? (
                   <>
                     <img

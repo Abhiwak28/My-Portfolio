@@ -112,7 +112,7 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-24 bg-gradient-to-b from-black via-blue-950/10 to-black overflow-hidden"
+      className="relative py-12 md:py-24 bg-gradient-to-b from-black via-blue-950/10 to-black overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-20 w-96 h-96 bg-amber-500 rounded-full filter blur-[150px] animate-pulse"></div>
@@ -121,7 +121,7 @@ const Contact = () => {
 
       <div className="relative z-10 container mx-auto px-6">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
             }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-full border border-orange-500/30 mb-6">
@@ -140,7 +140,7 @@ const Contact = () => {
 
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
           <div
-            className={`space-y-8 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            className={`space-y-8 transition-all duration-1000 delay-200 ease-out ${hasIntersected ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 -translate-x-12 blur-sm'
               }`}
           >
             <div>
@@ -152,51 +152,51 @@ const Contact = () => {
               </p>
             </div>
 
-            <div className="space-y-6">
-              <div className="group flex items-start gap-4 p-6 bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-6 h-6 text-white" />
+            <div className="grid grid-cols-3 gap-2 md:gap-6 md:block md:space-y-6">
+              <div className="group flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 p-3 md:p-6 bg-gradient-to-br from-white/5 to-transparent rounded-xl md:rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-bold text-white mb-1">Email</h4>
+                <div className="text-center md:text-left">
+                  <h4 className="text-[10px] md:text-lg font-bold text-white mb-0 md:mb-1">Email</h4>
                   <a
                     href="mailto:contact@abhiwaktiwari.com"
-                    className="text-gray-400 hover:text-orange-400 transition-colors"
+                    className="hidden md:block text-gray-400 hover:text-orange-400 transition-colors text-xs md:text-base"
                   >
                     contact@abhiwaktiwari.com
                   </a>
                 </div>
               </div>
 
-              <div className="group flex items-start gap-4 p-6 bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-orange-600 to-red-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-6 h-6 text-white" />
+              <div className="group flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 p-3 md:p-6 bg-gradient-to-br from-white/5 to-transparent rounded-xl md:rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-orange-600 to-red-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-bold text-white mb-1">Phone</h4>
+                <div className="text-center md:text-left">
+                  <h4 className="text-[10px] md:text-lg font-bold text-white mb-0 md:mb-1">Phone</h4>
                   <a
                     href="tel:+919876543210"
-                    className="text-gray-400 hover:text-orange-400 transition-colors"
+                    className="hidden md:block text-gray-400 hover:text-orange-400 transition-colors text-xs md:text-base"
                   >
                     +91 98765 43210
                   </a>
                 </div>
               </div>
 
-              <div className="group flex items-start gap-4 p-6 bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <MapPin className="w-6 h-6 text-white" />
+              <div className="group flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 p-3 md:p-6 bg-gradient-to-br from-white/5 to-transparent rounded-xl md:rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105">
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-bold text-white mb-1">Location</h4>
-                  <p className="text-gray-400">Mumbai, India</p>
+                <div className="text-center md:text-left">
+                  <h4 className="text-[10px] md:text-lg font-bold text-white mb-0 md:mb-1">Location</h4>
+                  <p className="hidden md:block text-gray-400 text-xs md:text-base">Mumbai, India</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div
-            className={`transition-all duration-1000 delay-300 ${hasIntersected ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            className={`transition-all duration-1000 delay-400 ease-out ${hasIntersected ? 'opacity-100 translate-x-0 blur-0' : 'opacity-0 translate-x-12 blur-sm'
               }`}
           >
             <form

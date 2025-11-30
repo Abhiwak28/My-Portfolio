@@ -49,12 +49,14 @@
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(30px) scale(0.95);
+      filter: blur(4px);
     }
 
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+      filter: blur(0);
     }
   }
 
@@ -158,5 +160,107 @@
 
   .animate-slide-in-right {
     animation: slideInRight 0.8s ease-out forwards;
+  }
+
+  /* Film Grain Animation */
+  @keyframes noise {
+
+    0%,
+    100% {
+      background-position: 0 0;
+    }
+
+    10% {
+      background-position: -5% -10%;
+    }
+
+    20% {
+      background-position: -15% 5%;
+    }
+
+    30% {
+      background-position: 7% -25%;
+    }
+
+    40% {
+      background-position: 20% 25%;
+    }
+
+    50% {
+      background-position: -25% 10%;
+    }
+
+    60% {
+      background-position: 15% 5%;
+    }
+
+    70% {
+      background-position: 0% 15%;
+    }
+
+    80% {
+      background-position: 25% 35%;
+    }
+
+    90% {
+      background-position: -10% 10%;
+    }
+  }
+
+  .animate-noise {
+    animation: noise 8s steps(10) infinite;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  /* Glitch Text Animations */
+  @keyframes glitch {
+
+    2%,
+    64% {
+      transform: translate(2px, 0) skew(0deg);
+    }
+
+    4%,
+    60% {
+      transform: translate(-2px, 0) skew(0deg);
+    }
+
+    62% {
+      transform: translate(0, 0) skew(5deg);
+    }
+  }
+
+  @keyframes glitchTop {
+
+    2%,
+    64% {
+      transform: translate(2px, -2px);
+    }
+
+    4%,
+    60% {
+      transform: translate(-2px, 2px);
+    }
+
+    62% {
+      transform: translate(13px, -1px) skew(-13deg);
+    }
+  }
+
+  @keyframes glitchBottom {
+
+    2%,
+    64% {
+      transform: translate(-2px, 0);
+    }
+
+    4%,
+    60% {
+      transform: translate(-2px, 0);
+    }
+
+    62% {
+      transform: translate(-22px, 5px) skew(21deg);
+    }
   }
 }

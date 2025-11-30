@@ -2,12 +2,21 @@ import { Instagram, Linkedin, Youtube, Heart, Shirt } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="bg-black py-12 border-t border-white/10 relative overflow-hidden">
+        <footer className="bg-black py-8 md:py-12 border-t border-white/10 relative overflow-hidden">
             <div className="absolute inset-0 opacity-20 pointer-events-none">
                 <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-t from-orange-900/40 to-amber-900/40 rounded-full blur-[100px]"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
+                <a
+                    href="#contact"
+                    className="block w-full text-center mb-12 md:mb-20 group"
+                >
+                    <h2 className="text-[12vw] leading-none font-black text-transparent bg-clip-text bg-gradient-to-b from-white/80 to-white/20 group-hover:from-orange-500 group-hover:to-amber-500 transition-all duration-500 scale-100 group-hover:scale-105 transform origin-center">
+                        LET'S CREATE
+                    </h2>
+                </a>
+
                 <div className="flex flex-col items-center justify-center gap-8">
 
                     {/* Social Links */}

@@ -53,7 +53,7 @@ const Testimonials = () => {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative py-24 bg-black overflow-hidden"
+      className="relative py-12 md:py-24 bg-black overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 right-20 w-96 h-96 bg-orange-500 rounded-full filter blur-[150px]"></div>
@@ -62,7 +62,7 @@ const Testimonials = () => {
 
       <div className="relative z-10 container mx-auto px-6">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
             }`}
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
@@ -81,7 +81,7 @@ const Testimonials = () => {
               }`}
           >
             <div className="relative min-h-[400px] bg-gradient-to-br from-white/5 to-transparent rounded-3xl border border-white/10 backdrop-blur-sm p-8 md:p-12 overflow-hidden">
-              <div className="absolute top-8 left-8 text-orange-500/20">
+              <div className="absolute top-8 left-8 text-orange-500/20 hidden md:block">
                 <Quote className="w-20 h-20" />
               </div>
 
@@ -146,7 +146,7 @@ const Testimonials = () => {
           </div>
 
           <div
-            className={`grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 transition-all duration-1000 delay-300 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            className={`hidden md:grid md:grid-cols-4 gap-4 mt-12 transition-all duration-1000 delay-300 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
               }`}
           >
             {testimonials.map((testimonial, index) => (

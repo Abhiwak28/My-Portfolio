@@ -106,7 +106,7 @@ const FolderSection = () => {
         <section
             id="folder-section"
             ref={sectionRef}
-            className="relative py-32 bg-black overflow-hidden"
+            className="relative py-16 md:py-32 bg-black overflow-hidden"
         >
             {/* Background Ambient Glow - Kept very subtle and neutral */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -114,33 +114,33 @@ const FolderSection = () => {
             </div>
 
             <div className="relative z-10 container mx-auto px-6">
-                <div className={`max-w-7xl mx-auto transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div className={`max-w-7xl mx-auto transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'}`}>
 
                     {/* Folders Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
+                    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12 mb-24">
                         {folders.map((folder, index) => (
                             <a
                                 key={index}
                                 href={folder.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex flex-col items-center justify-center gap-8 cursor-pointer perspective-[1000px]"
+                                className="group flex flex-col items-center justify-center gap-4 md:gap-8 cursor-pointer perspective-[1000px]"
                             >
                                 {/* Folder Icon Container */}
-                                <div className="relative w-44 h-36 transition-transform duration-500 group-hover:-translate-y-4 group-hover:scale-110">
+                                <div className="relative w-28 h-24 md:w-44 md:h-36 transition-transform duration-500 group-hover:-translate-y-4 group-hover:scale-110">
                                     {/* Subtle Glass Shadow/Glow - Turns Orange on Hover */}
                                     <div className="absolute inset-4 bg-white/10 blur-3xl rounded-full opacity-0 group-hover:bg-orange-500/30 group-hover:opacity-60 transition-all duration-500"></div>
 
                                     <ModernFolder />
                                 </div>
 
-                                <div className="space-y-2 text-center">
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors drop-shadow-lg">
+                                <div className="space-y-1 md:space-y-2 text-center">
+                                    <h3 className="text-sm md:text-2xl font-bold text-white group-hover:text-orange-400 transition-colors drop-shadow-lg leading-tight">
                                         {folder.title}
                                     </h3>
-                                    <div className="flex items-center justify-center gap-2 text-sm text-gray-500 group-hover:text-orange-300 transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300">
+                                    <div className="flex items-center justify-center gap-2 text-xs md:text-sm text-gray-500 group-hover:text-orange-300 transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300">
                                         <span className="uppercase tracking-wider font-medium">Open</span>
-                                        <ArrowUpRight className="w-4 h-4" />
+                                        <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4" />
                                     </div>
                                 </div>
                             </a>

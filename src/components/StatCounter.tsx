@@ -37,12 +37,12 @@ const StatCounter = ({ end, duration = 2000, suffix = '', label, gradientFrom, g
     return (
         <div
             ref={ref}
-            className={`p-6 bg-gradient-to-br from-${gradientFrom}/10 to-transparent rounded-2xl border border-${gradientFrom}/20 backdrop-blur-sm hover:scale-105 transition-transform duration-300`}
+            className={`p-2 md:p-6 bg-gradient-to-br from-${gradientFrom}/10 to-transparent rounded-2xl border border-${gradientFrom}/20 backdrop-blur-sm hover:scale-105 transition-transform duration-300`}
         >
-            <div className={`text-4xl md:text-5xl font-bold bg-gradient-to-r from-${gradientFrom} to-${gradientTo} bg-clip-text text-transparent mb-2`}>
+            <div className={`text-xl md:text-5xl font-bold bg-gradient-to-r from-${gradientFrom} to-${gradientTo} bg-clip-text text-transparent mb-1 md:mb-2`}>
                 {displayValue()}{suffix}
             </div>
-            <div className="text-gray-400 text-sm md:text-base">{label}</div>
+            <div className="text-gray-400 text-[10px] md:text-base leading-tight">{label}</div>
         </div>
     );
 };

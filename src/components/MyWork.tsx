@@ -93,7 +93,7 @@ const MyWork = () => {
     <section
       id="my-work"
       ref={sectionRef}
-      className="relative py-24 bg-black overflow-hidden"
+      className="relative py-12 md:py-24 bg-black overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-40 right-20 w-96 h-96 bg-orange-500 rounded-full filter blur-[150px]"></div>
@@ -101,7 +101,7 @@ const MyWork = () => {
 
       <div className="relative z-10 container mx-auto px-6">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
             }`}
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
@@ -115,7 +115,7 @@ const MyWork = () => {
         </div>
 
         <div
-          className={`transition-all duration-1000 delay-300 ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`transition-all duration-1000 delay-300 ease-out ${hasIntersected ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-12 blur-sm scale-95'
             }`}
         >
           <Swiper
