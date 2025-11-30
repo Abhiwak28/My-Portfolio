@@ -33,7 +33,7 @@ const testimonials = [
     role: 'Founder, FinTech Startup',
     image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=200',
     content: 'Professional, creative, and results-driven. Abhiwak delivered beyond expectations and helped us build a strong brand presence on social media.',
-    rating: 5,
+    rating: 3,
   },
 ];
 
