@@ -80,21 +80,29 @@ const workVideos = [
 const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isActive: boolean, shouldLoad: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Optimize video and poster URLs for faster loading
+  // Use only quality optimization for maximum compatibility
   const optimizedVideoUrl = videoUrl.includes('cloudinary.com') 
-    ? videoUrl.replace('/upload/', '/upload/f_auto,q_auto/')
+    ? videoUrl.replace('/upload/', '/upload/q_auto/')
     : videoUrl;
 
   const posterUrl = videoUrl.includes('cloudinary.com') 
-    ? videoUrl.replace('/upload/', '/upload/f_auto,q_auto/').replace(/\.(mp4|mov)$/i, '.jpg')
+    ? videoUrl.replace('/upload/', '/upload/q_auto,so_0/').replace(/\.(mp4|mov)$/i, '.jpg')
     : undefined;
 
   // Play or pause the video based on whether the slide is active
   useEffect(() => {
-    if (isActive && videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    } else if (videoRef.current) {
-      videoRef.current.pause();
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isActive) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Fallback for autoplay blocks
+        });
+      }
+    } else {
+      video.pause();
     }
   }, [isActive, shouldLoad]);
 
@@ -105,15 +113,14 @@ const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isA
   return (
     <video
       ref={videoRef}
+      src={optimizedVideoUrl}
       className="w-full h-full object-cover"
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       poster={posterUrl}
-    >
-      <source src={optimizedVideoUrl} type={optimizedVideoUrl.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
-    </video>
+    />
   );
 };
 
