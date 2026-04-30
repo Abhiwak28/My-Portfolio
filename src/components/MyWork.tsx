@@ -176,6 +176,11 @@ const workVideos = [
 const VideoPlayer = ({ videoUrl, isActive }: { videoUrl: string, isActive: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Auto-generate Cloudinary poster by replacing video extension with .jpg
+  const posterUrl = videoUrl.includes('cloudinary.com') 
+    ? videoUrl.replace(/\.(mp4|mov)$/i, '.jpg')
+    : undefined;
+
   // Play or pause the video based on whether the slide is active
   useEffect(() => {
     if (isActive) {
@@ -192,9 +197,10 @@ const VideoPlayer = ({ videoUrl, isActive }: { videoUrl: string, isActive: boole
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="none"
+      poster={posterUrl}
     >
-      <source src={videoUrl} type="video/mp4" />
+      <source src={videoUrl} />
     </video>
   );
 };

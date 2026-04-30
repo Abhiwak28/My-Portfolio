@@ -68,6 +68,7 @@ const VideoReviews = () => {
               <img
                 src={review.thumbnail}
                 alt={review.alt}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               

@@ -108,6 +108,7 @@ const Testimonials = () => {
                 <img
                   src={item.src}
                   alt={`Review from ${item.author}`}
+                  loading="lazy"
                   className="w-full h-auto object-contain rounded-lg"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/5052875/pexels-photo-5052875.jpeg?auto=compress&cs=tinysrgb&w=400';

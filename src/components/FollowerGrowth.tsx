@@ -58,6 +58,7 @@ const FollowerGrowth = () => {
                   key={`start-${activeIndex}`}
                   src={startImages[activeIndex]} 
                   alt="Starting Point stats" 
+                  loading="lazy"
                   className="w-full h-full object-cover object-center animate-fade-in-up"
                   onError={(e) => {
                     // Fallback to placeholder if image not found
@@ -93,6 +94,7 @@ const FollowerGrowth = () => {
                   key={`end-${activeIndex}`}
                   src={endImages[activeIndex]} 
                   alt="Current Followers stats" 
+                  loading="lazy"
                   className="w-full h-full object-cover object-center animate-fade-in-up"
                   onError={(e) => {
                     // Fallback to placeholder if image not found
