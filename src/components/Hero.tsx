@@ -88,9 +88,10 @@ const Hero = () => {
               gradientTo="orange-400"
             />
             <StatCounter
-              end={10000000}
+              end={1.0}
+              decimals={1}
               label="Views in 2025"
-              suffix="+"
+              suffix="Cr+"
               gradientFrom="orange-600"
               gradientTo="amber-400"
             />
