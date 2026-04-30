@@ -16,7 +16,7 @@ const workVideos = [
     title: 'Project Showcase 1',
     category: 'Highlight',
     thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800',
-    videoUrl: ASSETS.videos.work.brandStory,
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551171/video_11_rvjdeb.mp4',
     description: 'Featured work from the portfolio',
   },
   {
@@ -24,7 +24,7 @@ const workVideos = [
     title: 'Project Showcase 2',
     category: 'Highlight',
     thumbnail: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
-    videoUrl: ASSETS.videos.work.productLaunch,
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551166/video_10_pnpv9d.mp4',
     description: 'Creative visual storytelling',
   },
   {
@@ -32,7 +32,7 @@ const workVideos = [
     title: 'Project Showcase 3',
     category: 'Highlight',
     thumbnail: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-    videoUrl: ASSETS.videos.work.documentary,
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551153/video_18_yuq3em.mov',
     description: 'Impactful digital content',
   },
   {
@@ -40,7 +40,7 @@ const workVideos = [
     title: 'Project Showcase 4',
     category: 'Highlight',
     thumbnail: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
-    videoUrl: ASSETS.videos.work.project4,
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551131/video_14_rlabwj.mp4',
     description: 'Creative visual storytelling',
   },
   {
@@ -48,7 +48,7 @@ const workVideos = [
     title: 'Project Showcase 5',
     category: 'Highlight',
     thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800',
-    videoUrl: ASSETS.videos.work.project5,
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551066/video_19_ljcl8d.mp4',
     description: 'Featured work from the portfolio',
   },
   {
@@ -56,8 +56,24 @@ const workVideos = [
     title: 'Project Showcase 6',
     category: 'Highlight',
     thumbnail: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
-    videoUrl: ASSETS.videos.work.project6,
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551030/video_8_pqs4kz.mp4',
     description: 'High-impact product showcase',
+  },
+  {
+    id: 7,
+    title: 'Project Showcase 7',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551001/video_2_pwdhev.mp4',
+    description: 'Compelling narrative content',
+  },
+  {
+    id: 8,
+    title: 'Project Showcase 8',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: 'https://res.cloudinary.com/duv7rnryk/video/upload/v1777551036/video_9_uav9aq.mp4',
+    description: 'Creative visual storytelling',
   },
 ];
 
