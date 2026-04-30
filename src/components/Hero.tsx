@@ -49,24 +49,24 @@ const Hero = () => {
             ))}
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl mt-2 lg:text-8xl font-bold text-white mb-6 animate-fade-in-up animation-delay-200 whitespace-nowrap">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl mt-2 lg:text-8xl font-bold text-white mb-4 md:mb-6 animate-fade-in-up animation-delay-200">
             Abhiwak Tiwari
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200">
+          <p className="text-base sm:text-lg md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200">
             I Craft Real Organic Content Which Brings Revenue and Attention
           </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-4 text-sm md:text-base text-gray-400 mb-12 animate-fade-in-up animation-delay-400">
-            <span className="px-4 py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-full border border-orange-500/20">
+          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4 text-xs md:text-base text-gray-400 mb-8 md:mb-12 animate-fade-in-up animation-delay-400">
+            <span className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-full border border-orange-500/20">
               Building Creativejury!
             </span>
             <span className="hidden md:inline text-orange-400">•</span>
-            <span className="px-4 py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-full border border-orange-500/20">
+            <span className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-full border border-orange-500/20">
               Content Strategist
             </span>
             <span className="hidden md:inline text-orange-400">•</span>
-            <span className="px-4 py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-full border border-orange-500/20">
+            <span className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-full border border-orange-500/20">
               Creative Director
             </span>
           </div>
@@ -97,17 +97,17 @@ const Hero = () => {
             />
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4 justify-center w-full md:w-auto animate-fade-in-up animation-delay-800">
+          <div className="flex flex-row gap-3 md:gap-4 justify-center w-full md:w-auto animate-fade-in-up animation-delay-800">
             <a
               href="#my-work"
-              className="group w-full md:w-auto px-4 py-3 md:px-8 md:py-4 bg-gradient-to-r from-orange-600 to-amber-600 rounded-full text-white text-sm md:text-base font-semibold hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+              className="group flex-1 md:flex-none px-2 py-2.5 md:px-8 md:py-4 bg-gradient-to-r from-orange-600 to-amber-600 rounded-full text-white text-xs sm:text-sm md:text-base font-semibold hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-1.5 md:gap-2 whitespace-nowrap"
             >
               View My Work
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#contact"
-              className="w-full md:w-auto px-4 py-3 md:px-8 md:py-4 bg-transparent border-2 border-orange-500 rounded-full text-white text-sm md:text-base font-semibold hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 flex items-center justify-center"
+              className="flex-1 md:flex-none px-2 py-2.5 md:px-8 md:py-4 bg-transparent border-2 border-orange-500 rounded-full text-white text-xs sm:text-sm md:text-base font-semibold hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 flex items-center justify-center whitespace-nowrap"
             >
               Hire Me
             </a>

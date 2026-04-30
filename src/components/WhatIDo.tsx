@@ -80,7 +80,7 @@ const WhatIDo = () => {
         </div>
 
         <div className="w-full max-w-5xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -93,13 +93,13 @@ const WhatIDo = () => {
                     transitionDelay: `${index * 50}ms`,
                   }}
                 >
-                  <div className="group flex items-center gap-3 md:gap-4 bg-white/5 border border-white/10 px-5 py-3 md:px-6 md:py-4 rounded-full backdrop-blur-md hover:bg-white/10 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] transition-all duration-300 cursor-default">
+                  <div className="group flex items-center gap-2 md:gap-4 bg-white/5 border border-white/10 px-3 py-2 sm:px-5 sm:py-3 md:px-6 md:py-4 rounded-full backdrop-blur-md hover:bg-white/10 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] transition-all duration-300 cursor-default">
                     <div
-                      className={`w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
                     >
-                      <Icon className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                      <Icon className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white" />
                     </div>
-                    <span className="text-gray-200 font-semibold text-sm md:text-base group-hover:text-white transition-colors">
+                    <span className="text-gray-200 font-semibold text-xs sm:text-sm md:text-base group-hover:text-white transition-colors whitespace-nowrap">
                       {service.title}
                     </span>
                   </div>
