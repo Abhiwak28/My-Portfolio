@@ -176,9 +176,13 @@ const workVideos = [
 const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isActive: boolean, shouldLoad: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Auto-generate Cloudinary poster by replacing video extension with .jpg
+  // Optimize video and poster URLs for faster loading
+  const optimizedVideoUrl = videoUrl.includes('cloudinary.com') 
+    ? videoUrl.replace('/upload/', '/upload/f_auto,q_auto/')
+    : videoUrl;
+
   const posterUrl = videoUrl.includes('cloudinary.com') 
-    ? videoUrl.replace(/\.(mp4|mov)$/i, '.jpg')
+    ? videoUrl.replace('/upload/', '/upload/f_auto,q_auto/').replace(/\.(mp4|mov)$/i, '.jpg')
     : undefined;
 
   // Play or pause the video based on whether the slide is active
@@ -204,7 +208,7 @@ const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isA
       preload="auto"
       poster={posterUrl}
     >
-      <source src={videoUrl} type={videoUrl.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
+      <source src={optimizedVideoUrl} type={optimizedVideoUrl.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
     </video>
   );
 };
@@ -250,7 +254,7 @@ const MyWork = () => {
             loop={true}
             speed={1000}
             autoplay={{
-              delay: 4000,
+              delay: 5000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true
             }}
