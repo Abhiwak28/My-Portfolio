@@ -160,10 +160,10 @@ const Contact = () => {
                 <div className="text-center md:text-left">
                   <h4 className="text-[10px] md:text-lg font-bold text-white mb-0 md:mb-1">Email</h4>
                   <a
-                    href="mailto:contact@abhiwaktiwari.com"
+                    href="mailto:creativejury@gmail.com"
                     className="hidden md:block text-gray-400 hover:text-orange-400 transition-colors text-xs md:text-base"
                   >
-                    contact@abhiwaktiwari.com
+                    creativejury@gmail.com
                   </a>
                 </div>
               </div>
@@ -175,10 +175,10 @@ const Contact = () => {
                 <div className="text-center md:text-left">
                   <h4 className="text-[10px] md:text-lg font-bold text-white mb-0 md:mb-1">Phone</h4>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+919131084440"
                     className="hidden md:block text-gray-400 hover:text-orange-400 transition-colors text-xs md:text-base"
                   >
-                    +91 98765 43210
+                    9131084440
                   </a>
                 </div>
               </div>
@@ -189,7 +189,7 @@ const Contact = () => {
                 </div>
                 <div className="text-center md:text-left">
                   <h4 className="text-[10px] md:text-lg font-bold text-white mb-0 md:mb-1">Location</h4>
-                  <p className="hidden md:block text-gray-400 text-xs md:text-base">Mumbai, India</p>
+                  <p className="hidden md:block text-gray-400 text-xs md:text-base">Indore, India</p>
                 </div>
               </div>
             </div>
@@ -221,7 +221,7 @@ const Contact = () => {
                       ? 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20'
                       : 'border-white/10 focus:border-orange-500/50 focus:ring-orange-500/20'
                       }`}
-                    placeholder="John Doe"
+                    placeholder=""
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-400">{errors.name}</p>
@@ -243,7 +243,7 @@ const Contact = () => {
                       ? 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20'
                       : 'border-white/10 focus:border-orange-500/50 focus:ring-orange-500/20'
                       }`}
-                    placeholder="john@example.com"
+                    placeholder=""
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-400">{errors.email}</p>
@@ -265,7 +265,7 @@ const Contact = () => {
                       ? 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20'
                       : 'border-white/10 focus:border-orange-500/50 focus:ring-orange-500/20'
                       }`}
-                    placeholder="+91 98765 43210"
+                    placeholder=""
                   />
                   {errors.contactNumber && (
                     <p className="mt-1 text-sm text-red-400">{errors.contactNumber}</p>

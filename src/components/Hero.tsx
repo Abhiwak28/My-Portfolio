@@ -54,7 +54,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200">
-            I craft real, story-driven content people watch, remember, and share
+            I Craft Real Organic Content Which Brings Revenue and Attention
           </p>
 
           <div className="flex flex-wrap justify-center items-center gap-4 text-sm md:text-base text-gray-400 mb-12 animate-fade-in-up animation-delay-400">
@@ -67,28 +67,29 @@ const Hero = () => {
             </span>
             <span className="hidden md:inline text-orange-400">•</span>
             <span className="px-4 py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-full border border-orange-500/20">
-              Content Creator
+              Creative Director
             </span>
           </div>
 
           <div className="grid grid-cols-3 gap-2 md:gap-8 mb-12 animate-fade-in-up animation-delay-600">
             <StatCounter
-              end={100000}
-              label="YouTube Subscribers"
-              suffix="+"
+              end={9}
+              prefix=""
+              label="of Experience"
+              suffix=" Years"
               gradientFrom="orange-500"
               gradientTo="amber-400"
             />
             <StatCounter
-              end={800}
-              label="Videos Created"
-              suffix="+"
+              end={2}
+              label="High-Converting Assets"
+              suffix="K+"
               gradientFrom="amber-500"
               gradientTo="orange-400"
             />
             <StatCounter
               end={10000000}
-              label="Views in 2024"
+              label="Views in 2025"
               suffix="+"
               gradientFrom="orange-600"
               gradientTo="amber-400"

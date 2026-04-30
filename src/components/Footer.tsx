@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Youtube, Heart, Shirt } from 'lucide-react';
+import { Instagram, Youtube, Heart, Shirt } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -36,14 +36,6 @@ const Footer = () => {
                             className="group p-3 bg-white/5 rounded-full border border-white/10 hover:bg-white/10 hover:border-red-500/50 hover:scale-110 transition-all duration-300"
                         >
                             <Youtube className="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors" />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/abhiwaktiwari?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app "
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group p-3 bg-white/5 rounded-full border border-white/10 hover:bg-white/10 hover:border-blue-500/50 hover:scale-110 transition-all duration-300"
-                        >
-                            <Linkedin className="w-6 h-6 text-gray-400 group-hover:text-blue-500 transition-colors" />
                         </a>
                         <a
                             href="https://www.instagram.com/bleedyoursport?igsh=MWlmNWI2emw0aHNkeA%3D%3D&utm_source=qr"

@@ -1,14 +1,15 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
+import FollowerGrowth from './components/FollowerGrowth';
+import WhyHireMe from './components/WhyHireMe';
+import WhatsSpecial from './components/WhatsSpecial';
 import WhatIDo from './components/WhatIDo';
 import MyWork from './components/MyWork';
-import HowIWork from './components/HowIWork';
-import CaseStudies from './components/CaseStudies';
+import ReelsGallery from './components/ReelsGallery';
 import Testimonials from './components/Testimonials';
+import VideoReviews from './components/VideoReviews';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import FolderSection from './components/FolderSection';
 import CustomCursor from './components/CustomCursor';
 
 import ScrollProgress from './components/ScrollProgress';
@@ -23,11 +24,12 @@ function App() {
       <Hero />
       <WhatIDo />
       <MyWork />
-      <FolderSection />
-      <HowIWork />
-      <CaseStudies />
-      <About />
+      <ReelsGallery />
+      <FollowerGrowth />
+      <WhyHireMe />
+      <WhatsSpecial />
       <Testimonials />
+      <VideoReviews />
       <Contact />
       <Footer />
     </div>

@@ -10,7 +10,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > window.innerHeight - 100);
 
-      const sections = ['home', 'what-i-do', 'my-work', 'about'];
+      const sections = ['home', 'what-i-do', 'my-work', 'whats-special'];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -29,7 +29,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = ['Home', 'My Work', 'About'];
+  const navLinks = [
+    { name: 'Home', id: 'home' },
+    { name: 'My Work', id: 'my-work' },
+    { name: "What's Special?", id: 'whats-special' }
+  ];
 
   return (
     <nav
@@ -50,16 +54,15 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-12">
             <div className="flex items-center gap-8">
               {navLinks.map((link, index) => {
-                const linkId = link.toLowerCase().replace(' ', '-');
-                const isActive = activeLink === linkId;
+                const isActive = activeLink === link.id;
                 return (
                   <a
                     key={index}
-                    href={`#${linkId}`}
+                    href={`#${link.id}`}
                     className={`text-sm transition-colors duration-300 relative group ${isActive ? 'text-white font-semibold' : 'text-gray-300 hover:text-white'
                       }`}
                   >
-                    {link}
+                    {link.name}
                     <span
                       className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-400 to-amber-400 transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
                         }`}
@@ -88,19 +91,18 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 py-4 bg-black/90 backdrop-blur-lg rounded-2xl border border-white/10 animate-fade-in-up space-y-2">
             {navLinks.map((link, index) => {
-              const linkId = link.toLowerCase().replace(' ', '-');
-              const isActive = activeLink === linkId;
+              const isActive = activeLink === link.id;
               return (
                 <a
                   key={index}
-                  href={`#${linkId}`}
+                  href={`#${link.id}`}
                   className={`block py-3 px-4 rounded-lg mx-2 transition-all duration-300 ${isActive
                     ? 'text-white bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30'
                     : 'text-gray-300 hover:text-white hover:bg-orange-500/10'
                     }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link}
+                  {link.name}
                 </a>
               );
             })}

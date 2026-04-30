@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
@@ -83,7 +83,121 @@ const workVideos = [
     videoUrl: ASSETS.videos.work.project9,
     description: 'Featured work from the portfolio',
   },
+  {
+    id: 10,
+    title: 'Project Showcase 10',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project10,
+    description: 'Impactful digital content',
+  },
+  {
+    id: 11,
+    title: 'Project Showcase 11',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project11,
+    description: 'Creative visual storytelling',
+  },
+  {
+    id: 12,
+    title: 'Project Showcase 12',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project12,
+    description: 'High-impact product showcase',
+  },
+  {
+    id: 13,
+    title: 'Project Showcase 13',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project13,
+    description: 'Compelling narrative content',
+  },
+  {
+    id: 14,
+    title: 'Project Showcase 14',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project14,
+    description: 'Creative visual storytelling',
+  },
+  {
+    id: 15,
+    title: 'Project Showcase 15',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project15,
+    description: 'Featured work from the portfolio',
+  },
+  {
+    id: 16,
+    title: 'Project Showcase 16',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project16,
+    description: 'Impactful digital content',
+  },
+  {
+    id: 17,
+    title: 'Project Showcase 17',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project17,
+    description: 'Creative visual storytelling',
+  },
+  {
+    id: 18,
+    title: 'Project Showcase 18',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project18,
+    description: 'Featured work from the portfolio',
+  },
+  {
+    id: 19,
+    title: 'Project Showcase 19',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project19,
+    description: 'High-impact product showcase',
+  },
+  {
+    id: 20,
+    title: 'Project Showcase 20',
+    category: 'Highlight',
+    thumbnail: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+    videoUrl: ASSETS.videos.work.project20,
+    description: 'Impactful digital content',
+  },
 ];
+
+const VideoPlayer = ({ videoUrl, isActive }: { videoUrl: string, isActive: boolean }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Play or pause the video based on whether the slide is active
+  useEffect(() => {
+    if (isActive) {
+      videoRef.current?.play().catch(() => {});
+    } else {
+      videoRef.current?.pause();
+    }
+  }, [isActive]);
+
+  return (
+    <video
+      ref={videoRef}
+      className="w-full h-full object-cover"
+      muted
+      loop
+      playsInline
+      preload="metadata"
+    >
+      <source src={videoUrl} type="video/mp4" />
+    </video>
+  );
+};
 
 const MyWork = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -141,39 +255,14 @@ const MyWork = () => {
             modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
             className="mySwiper !pb-12"
           >
-            {[...workVideos, ...workVideos, ...workVideos].map((video, index) => (
+            {workVideos.map((video) => (
               <SwiperSlide
-                key={`${video.id}-${index}`}
+                key={video.id}
                 className="!w-[300px] sm:!w-[350px] md:!w-[400px] aspect-[9/16] rounded-2xl overflow-hidden border border-white/10 bg-gray-900"
               >
                 {({ isActive }) => (
-                  <div
-                    className={`relative w-full h-full transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-100'
-                      }`}
-                  >
-                    <video
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    >
-                      <source src={video.videoUrl} type="video/mp4" />
-                    </video>
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
-
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
-                      <span className="inline-block px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-xs text-orange-300 mb-2">
-                        {video.category}
-                      </span>
-                      <h3 className="text-xl font-bold text-white mb-1">
-                        {video.title}
-                      </h3>
-                      <p className="text-sm text-gray-400 line-clamp-2">
-                        {video.description}
-                      </p>
-                    </div>
+                  <div className={`relative w-full h-full transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-50'}`}>
+                    <VideoPlayer videoUrl={video.videoUrl} isActive={isActive} />
                   </div>
                 )}
               </SwiperSlide>
