@@ -163,9 +163,9 @@ const MyWork = () => {
             centeredSlides={true}
             slidesPerView={'auto'}
             loop={true}
-            speed={1000}
+            speed={3000}
             autoplay={{
-              delay: 5000,
+              delay: 0,
               disableOnInteraction: false,
               pauseOnMouseEnter: true
             }}
