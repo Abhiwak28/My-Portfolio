@@ -10,15 +10,15 @@ import Testimonials from './components/Testimonials';
 import VideoReviews from './components/VideoReviews';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
+
 
 import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden cursor-none relative">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-overlay animate-noise"></div>
-      <CustomCursor />
+
       <ScrollProgress />
       <Navbar />
       <Hero />
