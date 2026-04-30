@@ -173,7 +173,7 @@ const workVideos = [
   },
 ];
 
-const VideoPlayer = ({ videoUrl, isActive }: { videoUrl: string, isActive: boolean }) => {
+const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isActive: boolean, shouldLoad: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Auto-generate Cloudinary poster by replacing video extension with .jpg
@@ -183,12 +183,16 @@ const VideoPlayer = ({ videoUrl, isActive }: { videoUrl: string, isActive: boole
 
   // Play or pause the video based on whether the slide is active
   useEffect(() => {
-    if (isActive) {
-      videoRef.current?.play().catch(() => {});
-    } else {
-      videoRef.current?.pause();
+    if (isActive && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    } else if (videoRef.current) {
+      videoRef.current.pause();
     }
-  }, [isActive]);
+  }, [isActive, shouldLoad]);
+
+  if (!shouldLoad) {
+    return <img src={posterUrl} className="w-full h-full object-cover" alt="Thumbnail" />;
+  }
 
   return (
     <video
@@ -197,7 +201,7 @@ const VideoPlayer = ({ videoUrl, isActive }: { videoUrl: string, isActive: boole
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       poster={posterUrl}
     >
       <source src={videoUrl} type={videoUrl.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
@@ -266,9 +270,13 @@ const MyWork = () => {
                 key={video.id}
                 className="!w-[300px] sm:!w-[350px] md:!w-[400px] aspect-[9/16] rounded-2xl overflow-hidden border border-white/10 bg-gray-900"
               >
-                {({ isActive }) => (
+                {({ isActive, isNext, isPrev }) => (
                   <div className={`relative w-full h-full transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-50'}`}>
-                    <VideoPlayer videoUrl={video.videoUrl} isActive={isActive} />
+                    <VideoPlayer 
+                      videoUrl={video.videoUrl} 
+                      isActive={isActive} 
+                      shouldLoad={isActive || isNext || isPrev} 
+                    />
                   </div>
                 )}
               </SwiperSlide>
