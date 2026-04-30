@@ -197,10 +197,10 @@ const VideoPlayer = ({ videoUrl, isActive }: { videoUrl: string, isActive: boole
       muted
       loop
       playsInline
-      preload="none"
+      preload="metadata"
       poster={posterUrl}
     >
-      <source src={videoUrl} />
+      <source src={videoUrl} type={videoUrl.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
     </video>
   );
 };
@@ -244,9 +244,9 @@ const MyWork = () => {
             centeredSlides={true}
             slidesPerView={'auto'}
             loop={true}
-            speed={3000}
+            speed={1000}
             autoplay={{
-              delay: 0,
+              delay: 4000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true
             }}
