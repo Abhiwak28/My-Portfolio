@@ -98,7 +98,7 @@ const Testimonials = () => {
           className={`max-w-6xl mx-auto transition-all duration-1000 delay-300 ease-out ${hasIntersected ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-4 items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto px-2 md:px-4 items-center">
             {MEDIA_ITEMS.map((item) => (
               <div 
                 key={item.id}
