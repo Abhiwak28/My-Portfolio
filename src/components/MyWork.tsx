@@ -81,20 +81,19 @@ const workVideos = [
 const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isActive: boolean, shouldLoad: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Use fixed mp4 format for faster response and consistent behavior
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const optimizedVideoUrl = videoUrl.includes('cloudinary.com')
-    ? videoUrl.replace('/upload/', `/upload/q_auto,w_${isMobile ? 480 : 720}/`).replace(/\.mov$/i, '.mp4')
-    : videoUrl;
-    
+  const optimizedVideoUrl = optimizeCloudinaryUrl(videoUrl, { 
+    width: isMobile ? 480 : 720 
+  });
   const posterUrl = getCloudinaryVideoPoster(videoUrl);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !shouldLoad) return;
 
-    if (isActive) {
+    if (isActive && isLoaded) {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
@@ -105,7 +104,7 @@ const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isA
       video.pause();
       setIsPlaying(false);
     }
-  }, [isActive, shouldLoad]);
+  }, [isActive, shouldLoad, isLoaded]);
 
   if (!shouldLoad) {
     return (
@@ -123,17 +122,24 @@ const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isA
       <video
         ref={videoRef}
         src={optimizedVideoUrl}
-        className="w-full h-full object-cover"
+        className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         muted
         loop
         playsInline
         preload="auto"
         poster={posterUrl}
+        onLoadedData={() => setIsLoaded(true)}
       />
       
-      {isActive && !isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer" onClick={() => videoRef.current?.play()}>
-          <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50 hover:scale-110 transition-transform">
+      {!isLoaded && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900">
+          <div className="w-8 h-8 border-2 border-orange-500/30 border-t-orange-500 rounded-full animate-spin mb-2"></div>
+        </div>
+      )}
+
+      {isActive && !isPlaying && isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onClick={() => videoRef.current?.play()}>
+          <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50">
             <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
           </div>
         </div>
@@ -230,4 +236,3 @@ const MyWork = () => {
 };
 
 export default MyWork;
-
