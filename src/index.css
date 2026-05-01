@@ -60,6 +60,11 @@
     }
   }
 
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+    will-change: transform, opacity, filter;
+  }
+
   @keyframes marquee {
     0% {
       transform: translateX(0%);
@@ -71,6 +76,7 @@
 
   .animate-marquee {
     animation: marquee 30s linear infinite;
+    will-change: transform;
   }
 
   @keyframes scroll {
@@ -145,16 +151,13 @@
     }
   }
 
-  .animate-fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
-  }
-
   .animate-scroll {
     animation: scroll 2s ease-in-out infinite;
   }
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-shimmer {
@@ -169,60 +172,33 @@
 
   .animate-slide-in-left {
     animation: slideInLeft 0.8s ease-out forwards;
+    will-change: transform, opacity;
   }
 
   .animate-slide-in-right {
     animation: slideInRight 0.8s ease-out forwards;
+    will-change: transform, opacity;
   }
 
-  /* Film Grain Animation */
+  /* Film Grain Animation - Optimized with slower steps and transform for better performance */
   @keyframes noise {
-
-    0%,
-    100% {
-      background-position: 0 0;
-    }
-
-    10% {
-      background-position: -5% -10%;
-    }
-
-    20% {
-      background-position: -15% 5%;
-    }
-
-    30% {
-      background-position: 7% -25%;
-    }
-
-    40% {
-      background-position: 20% 25%;
-    }
-
-    50% {
-      background-position: -25% 10%;
-    }
-
-    60% {
-      background-position: 15% 5%;
-    }
-
-    70% {
-      background-position: 0% 15%;
-    }
-
-    80% {
-      background-position: 25% 35%;
-    }
-
-    90% {
-      background-position: -10% 10%;
-    }
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(20%, 25%); }
+    50% { transform: translate(-25%, 10%); }
+    60% { transform: translate(15%, 5%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(25%, 35%); }
+    90% { transform: translate(-10%, 10%); }
   }
 
   .animate-noise {
-    animation: noise 8s steps(10) infinite;
+    animation: noise 2s steps(8) infinite;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    will-change: transform;
   }
 
   /* Glitch Text Animations */

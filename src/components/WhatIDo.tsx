@@ -93,7 +93,7 @@ const WhatIDo = () => {
                     transitionDelay: `${index * 50}ms`,
                   }}
                 >
-                  <div className="group flex items-center gap-2 md:gap-4 bg-white/5 border border-white/10 px-3 py-2 sm:px-5 sm:py-3 md:px-6 md:py-4 rounded-full backdrop-blur-md hover:bg-white/10 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] transition-all duration-300 cursor-default">
+                  <div className="group flex items-center gap-2 md:gap-4 bg-white/10 md:bg-white/5 border border-white/10 px-3 py-2 sm:px-5 sm:py-3 md:px-6 md:py-4 rounded-full md:backdrop-blur-md hover:bg-white/10 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] transition-all duration-300 cursor-default">
                     <div
                       className={`w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
                     >

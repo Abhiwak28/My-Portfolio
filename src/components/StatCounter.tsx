@@ -21,7 +21,7 @@ const StatCounter = ({ end, decimals = 0, duration = 2000, prefix = '', suffix =
     return (
         <div
             ref={ref}
-            className={`p-2 md:p-6 bg-gradient-to-br from-${gradientFrom}/10 to-transparent rounded-2xl border border-${gradientFrom}/20 backdrop-blur-sm hover:scale-105 transition-transform duration-300`}
+            className={`p-2 md:p-6 bg-gradient-to-br from-${gradientFrom}/20 md:from-${gradientFrom}/10 to-transparent rounded-2xl border border-${gradientFrom}/20 md:backdrop-blur-sm hover:scale-105 transition-transform duration-300`}
         >
             <div className={`text-xl md:text-5xl font-bold bg-gradient-to-r from-${gradientFrom} to-${gradientTo} bg-clip-text text-transparent mb-1 md:mb-2`}>
                 {prefix}{count.toFixed(decimals)}{suffix}

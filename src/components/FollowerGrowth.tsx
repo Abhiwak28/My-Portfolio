@@ -43,14 +43,14 @@ const FollowerGrowth = () => {
         </div>
 
         <div className={`relative max-w-5xl mx-auto transition-all duration-1500 delay-500 ease-out ${hasIntersected ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-10 bg-gray-900/30 rounded-3xl border border-white/10 p-6 md:p-10 backdrop-blur-md shadow-2xl relative overflow-hidden group">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-10 bg-gray-900/50 md:bg-gray-900/30 rounded-3xl border border-white/10 p-6 md:p-10 md:backdrop-blur-md shadow-2xl relative overflow-hidden group">
             
             {/* Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md bg-orange-500/20 rounded-full blur-[100px] pointer-events-none transition-opacity duration-1000 group-hover:opacity-100 opacity-50"></div>
 
             {/* Before Image */}
             <div className="relative z-10 flex flex-col items-center w-full max-w-sm md:max-w-md">
-              <span className="bg-white/10 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4 border border-white/10 shadow-lg backdrop-blur-md">
+              <span className="bg-white/20 md:bg-white/10 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4 border border-white/10 shadow-lg md:backdrop-blur-md">
                 Starting Point
               </span>
               <div className="w-full aspect-[21/9] rounded-2xl overflow-hidden border border-white/10 shadow-xl transition-all duration-500 bg-gray-950 flex items-center justify-center hover:scale-105">

@@ -1,18 +1,27 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { ASSETS } from '../constants/assets';
+import { optimizeCloudinaryUrl } from '../lib/cloudinary';
 import StatCounter from './StatCounter';
 import GlitchText from './GlitchText';
 
 const Hero = () => {
   const greetings = ['Namaste', 'Hello', 'Bonjour', 'Hola', 'Ciao'];
   const [currentGreeting, setCurrentGreeting] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const interval = setInterval(() => {
       setCurrentGreeting((prev) => (prev + 1) % greetings.length);
     }, 2000);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   return (
@@ -25,7 +34,7 @@ const Hero = () => {
           playsInline
           className="w-full h-full object-cover opacity-20"
         >
-          <source src={ASSETS.videos.heroBg} type="video/mp4" />
+          <source src={optimizeCloudinaryUrl(ASSETS.videos.heroBg, { width: isMobile ? 480 : 1280 })} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black"></div>
       </div>
