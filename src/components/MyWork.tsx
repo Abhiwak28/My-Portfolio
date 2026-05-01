@@ -81,12 +81,13 @@ const workVideos = [
 const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isActive: boolean, shouldLoad: boolean }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Use even lower resolution and bitrate for faster loading
-  // Use even lower resolution and bitrate for mobile/laptop performance
+  // Use fixed mp4 format for faster response and consistent behavior
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const optimizedVideoUrl = optimizeCloudinaryUrl(videoUrl, { width: isMobile ? 360 : 480 });
+  const optimizedVideoUrl = videoUrl.includes('cloudinary.com')
+    ? videoUrl.replace('/upload/', `/upload/q_auto,w_${isMobile ? 480 : 720}/`).replace(/\.mov$/i, '.mp4')
+    : videoUrl;
+    
   const posterUrl = getCloudinaryVideoPoster(videoUrl);
 
   useEffect(() => {
@@ -108,10 +109,10 @@ const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isA
 
   if (!shouldLoad) {
     return (
-      <div className="w-full h-full relative bg-gray-900">
-        <img src={posterUrl} className="w-full h-full object-cover opacity-50" alt="Thumbnail" loading="lazy" />
+      <div className="w-full h-full relative bg-gray-950">
+        <img src={posterUrl} className="w-full h-full object-cover opacity-40" alt="Thumbnail" loading="lazy" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <Play className="w-10 h-10 text-white/20" />
+          <Play className="w-10 h-10 text-white/10" />
         </div>
       </div>
     );
@@ -122,24 +123,16 @@ const VideoPlayer = ({ videoUrl, isActive, shouldLoad }: { videoUrl: string, isA
       <video
         ref={videoRef}
         src={optimizedVideoUrl}
-        className={`w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className="w-full h-full object-cover"
         muted
         loop
         playsInline
-        preload={isActive ? "auto" : "metadata"}
+        preload="auto"
         poster={posterUrl}
-        onLoadedData={() => setIsLoaded(true)}
       />
       
-      {!isLoaded && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900">
-          <div className="w-8 h-8 border-2 border-orange-500/30 border-t-orange-500 rounded-full animate-spin mb-2"></div>
-          <img src={posterUrl} className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" alt="" />
-        </div>
-      )}
-
-      {isActive && !isPlaying && isLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer" onClick={() => videoRef.current?.play()}>
+      {isActive && !isPlaying && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer" onClick={() => videoRef.current?.play()}>
           <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50 hover:scale-110 transition-transform">
             <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
           </div>
